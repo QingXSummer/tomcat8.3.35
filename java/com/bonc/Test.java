@@ -10,8 +10,13 @@ import java.net.Socket;
  * Author :Qing_X
  * Date   :2019-04-20 11:21
  */
-public class Test {
+public class Test extends ClassLoader{
     public static void main(String[] args) {
         System.out.println(Runtime.getRuntime().availableProcessors());
+    }
+
+    @Override
+    protected Class <?> findClass(String name) throws ClassNotFoundException {
+        return super.findClass(name);
     }
 }

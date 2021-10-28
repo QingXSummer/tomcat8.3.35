@@ -874,10 +874,10 @@ public class Http11InputBuffer implements InputBuffer, ApplicationBufferHandler 
                     } else if (chr == Constants.LF) {
                         eol = true;
                     } else if (chr == Constants.SP || chr == Constants.HT) {
-                        //空白字符缺少lastSignificantChar赋值，是为了减少
                         byteBuffer.put(headerData.realPos, chr);
                         headerData.realPos++;
                     } else {
+                        //压缩空字符 realPos最初指向 请求头值的第一个位置
                         byteBuffer.put(headerData.realPos, chr);
                         headerData.realPos++;
                         headerData.lastSignificantChar = headerData.realPos;
